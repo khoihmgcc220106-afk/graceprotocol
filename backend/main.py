@@ -1,0 +1,15 @@
+from fastapi import FastAPI
+
+app = FastAPI(
+    title="Grace Protocol API",
+    description="Vietnamese Spelling Diagnostic Platform",
+    version="0.1.0",
+)
+
+@app.get("/")
+def read_root():
+    return {"message": "Grace Protocol Backend Service is running"}
+
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
