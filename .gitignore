@@ -1,6 +1,24 @@
+# Environments and Secrets
+.env
 backend/venv/
+
+# Python Artifacts
 **/__pycache__/
 *.pyc
-.env
+*.pyo
+*.pyd
+
+# Node.js and Next.js (Frontend)
 node_modules/
 .next/
+out/
+build/
+
+# OS and Editor specific
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log

@@ -1,28 +1,31 @@
 import sys
 import os
 from logging.config import fileConfig
+from dotenv import load_dotenv
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
 
-# Thêm đường dẫn thư mục backend vào sys.path để import database và models
+# Add the backend directory to sys.path
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 from database import Base
-import models  # Bắt buộc import models để Alembic nhận diện sơ đồ các bảng
+import models
 
-# Đối tượng cấu hình của Alembic
+# Load .env file
+load_dotenv(os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env'))
+
 config = context.config
 
-# Cấu hình logging từ file .ini
+# Override sqlalchemy.url with environment variable to secure credentials
+config.set_main_option("sqlalchemy.url", os.environ.get("DATABASE_URL"))
+
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-# Gán metadata chuẩn cho Alembic
 target_metadata = Base.metadata
-
 
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode."""
@@ -36,7 +39,6 @@ def run_migrations_offline() -> None:
 
     with context.begin_transaction():
         context.run_migrations()
-
 
 def run_migrations_online() -> None:
     """Run migrations in 'online' mode."""
@@ -53,7 +55,6 @@ def run_migrations_online() -> None:
 
         with context.begin_transaction():
             context.run_migrations()
-
 
 if context.is_offline_mode():
     run_migrations_offline()
