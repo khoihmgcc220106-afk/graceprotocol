@@ -1,0 +1,28 @@
+{
+  "phonological_errors": {
+    "northern_dialect": [
+      {
+        "id": "l_n_confusion",
+        "description": "Confusion between initial consonants /l/ and /n/",
+        "example": {"wrong": "lói", "correct": "nói"}
+      },
+      {
+        "id": "tr_ch_confusion",
+        "description": "Confusion between initial consonants /tr/ and /ch/",
+        "example": {"wrong": "che", "correct": "tre"}
+      }
+    ],
+    "southern_dialect": [
+      {
+        "id": "v_d_confusion",
+        "description": "Confusion between initial consonants /v/ and /j/ (d/gi)",
+        "example": {"wrong": "dề", "correct": "về"}
+      },
+      {
+        "id": "final_t_c_confusion",
+        "description": "Confusion between final consonants /t/ and /c/",
+        "example": {"wrong": "mát", "correct": "mác"}
+      }
+    ]
+  }
+}
